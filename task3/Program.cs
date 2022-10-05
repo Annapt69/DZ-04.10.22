@@ -30,21 +30,18 @@ void printArray(double[] incomingArray)
 double getDifferenceMaxOfMin(double[] incomingArray)
 {
     double max = 0;
-    double min = 0;
-    for (int i = 0; i < incomingArray.Length; i++)
+    double min = int.MaxValue;
+    for (int j = 0; j < incomingArray.Length; j++)
     {
-        if (incomingArray[i] > max) max = incomingArray[i];
+        if (incomingArray[j] > max) 
         {
-            incomingArray[i] = incomingArray[i] + 1;
+            max = incomingArray[j];
         }
-    
-        for (int j = i + 1; j < incomingArray.Length; j++)
+        if (incomingArray[j] < min)
         {
-            if (incomingArray[j] < min) min = incomingArray[j];
-            {
-                incomingArray[j] = incomingArray[j] + 1;
-            }
+            min = incomingArray[j];
         }
+
     }
 double result = 0;  
     if (max > 0 && min > 0)
@@ -54,7 +51,7 @@ double result = 0;
     return result;
 }
 
-double[] currentArray = getDoubleArray(5, 1, 99);
+double[] currentArray = getDoubleArray(5, 1, 10);
 printArray(currentArray);
 
 double DifferenceMaxOfMin = getDifferenceMaxOfMin(currentArray);
